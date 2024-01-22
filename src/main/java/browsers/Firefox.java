@@ -4,11 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import io.qameta.allure.Allure;
+import main.Loggers;
+
 public class Firefox {
 
 	public static WebDriver init_firefox() {
 		FirefoxOptions options = new FirefoxOptions();
 		WebDriver driver = new FirefoxDriver(options);
+		Allure.step("start fire fox");
+		Loggers.logger.info("start fire fox");
 		return driver;
 	}
 }

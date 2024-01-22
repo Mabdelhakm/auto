@@ -2,7 +2,7 @@
 	<Properties>
 		<Property name="layout">%highlight{%d{YYYY MM DD HH MM ss} [%t] %-5level: %msg%n}</Property>
 		<Property name="file_pattern">%d{YYYY MM DD HH MM}</Property>
-		<Property name="path">./test_output/logs</Property>
+		<Property name="path">./test-output/logs</Property>
 	</Properties>
 	<Appenders>
 		<console name="console" target="SYSTEM_OUT">

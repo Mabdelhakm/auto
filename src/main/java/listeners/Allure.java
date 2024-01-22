@@ -6,6 +6,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import io.qameta.allure.Attachment;
+import main.Setup;
 
 public class Allure extends Setup implements ITestListener {
 
