@@ -63,8 +63,14 @@ public class Setup {
 			return built_in_actions;
 		}
 	}
+	
+	public CustomActions getCustomActions() {
+		custom_actions=  customized_actions();
+		return custom_actions;
+	}
+	
 
-	public CustomActions customized_actions() {
+	private CustomActions customized_actions() {
 		if (custom_actions instanceof CustomActions) {
 			return custom_actions;
 		} else {

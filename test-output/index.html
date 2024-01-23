@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\testteamkhattab\AppData\Local\Temp\testng-eclipse--880291782\testng-customsuite.xml</span>
+                    <span>C:\Users\testteamkhattab\AppData\Local\Temp\testng-eclipse-1005644991\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -130,12 +130,7 @@
                   <a name="successfull_login">
                   </a> <!-- successfull_login -->
                   <span class="method-name">successfull_login</span>
-                  <div class="stack-trace">java.lang.IllegalArgumentException: Input must be set
-	at org.openqa.selenium.internal.Require.nonNull(Require.java:60)
-	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:93)
-	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:74)
-	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:43)
-	at main.CustomActions.explicit_wait_till_visible(CustomActions.java:19)
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.get(String)&quot; because &quot;this.driver&quot; is null
 	at pages.HomeScreen.clickingTheSignInButton(HomeScreen.java:14)
 	at tests.Tests.successfull_login(Tests.java:19)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -175,7 +170,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\testteamkhattab\AppData\Local\Temp\testng-eclipse--880291782\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\testteamkhattab\AppData\Local\Temp\testng-eclipse-1005644991\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -232,12 +227,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'successfull_login')
 data.setCell(0, 2, 'tests.Tests')
-data.setCell(0, 3, 51);
+data.setCell(0, 3, 64);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 51 ms</span>
+              <span class="suite-total-time">Total running time: 64 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -272,11 +267,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">successfull_login</span>
-                <span class="method-start">5140 ms</span>
+                <span class="method-start">3887 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">close_browser</span>
-                <span class="method-start">5244 ms</span>
+                <span class="method-start">3998 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -12,17 +12,18 @@ public class SingInPage  extends Setup{
 	
 	
 	public void typing_username(String msg) {
-		customized_actions().explicit_wait_till_visible(username_field, 10);
-		customized_actions().typing_in_element(username_field, msg);
+		
+		getCustomActions().explicit_wait_till_visible(username_field, 10);
+		getCustomActions().typing_in_element(username_field, msg);
 	}
 	
 	public void typing_password(String msg) {
-		customized_actions().explicit_wait_till_visible(password_field, 10);
-		customized_actions().typing_in_element(password_field, msg);
+		getCustomActions().explicit_wait_till_visible(password_field, 10);
+		getCustomActions().typing_in_element(password_field, msg);
 	}
 
 	public void clicking_login_button() {
-		customized_actions().explicit_wait_till_visible(login_button, 10);
-		customized_actions().clicking_element(login_button);
+		getCustomActions().explicit_wait_till_visible(login_button, 10);
+		getCustomActions().clicking_element(login_button);
 	}
 }
