@@ -17,7 +17,7 @@ import browsers.Firefox;
 import io.qameta.allure.Allure;
 
 public class Setup {
-	public WebDriver driver;
+	public static WebDriver driver;
 	private FileReader fr;
 	public Properties prop;
 	private Actions built_in_actions;
@@ -52,23 +52,18 @@ public class Setup {
 		driver.get(prop.getProperty("url"));
 		Loggers.logger.info("navigate to " + prop.getProperty("url"));
 //		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-		
+
 	}
 
-	public Actions selenium_built_in_actions() {
-		if (built_in_actions instanceof Actions) {
-			return built_in_actions;
-		} else {
-			built_in_actions = new Actions(this.driver);
-			return built_in_actions;
-		}
-	}
-	
 	public CustomActions getCustomActions() {
-		custom_actions=  customized_actions();
+		custom_actions = customized_actions();
 		return custom_actions;
 	}
-	
+
+	public Actions getBuiltInActions() {
+		built_in_actions = selenium_built_in_actions();
+		return built_in_actions;
+	}
 
 	private CustomActions customized_actions() {
 		if (custom_actions instanceof CustomActions) {
@@ -78,6 +73,15 @@ public class Setup {
 			return custom_actions;
 		}
 
+	}
+
+	private Actions selenium_built_in_actions() {
+		if (built_in_actions instanceof Actions) {
+			return built_in_actions;
+		} else {
+			built_in_actions = new Actions(driver);
+			return built_in_actions;
+		}
 	}
 
 	@AfterMethod
