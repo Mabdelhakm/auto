@@ -18,19 +18,19 @@ public class CustomActions {
 	public void explicit_wait_till_visible(By ele, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ele));
-		Loggers.logger.info("wait for the element tag: " + driver.findElement(ele).getTagName() + "to be visible");
+		Loggers.logger.info("wait for the element tag: " + driver.findElement(ele).getTagName() + " to be visible");
 	}
 
 	public void explicit_wait_till_clickable(By ele, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.elementToBeClickable(ele));
-		Loggers.logger.info("wait for the element tag: " + driver.findElement(ele).getTagName() + "to be clickable");
+		Loggers.logger.info("wait for the element tag: " + driver.findElement(ele).getTagName() + " to be clickable");
 	}
 
 	public void explicit_wait_till_invisibility(By ele, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(ele));
-		Loggers.logger.info("wait for the element tag:" + driver.findElement(ele).getTagName() + "to be invisible");
+		Loggers.logger.info("wait for the element tag:" + driver.findElement(ele).getTagName() + " to be invisible");
 	}
 	
 	public void clicking_element(By ele) {
@@ -41,12 +41,12 @@ public class CustomActions {
 
 	public void typing_in_element(By ele, String text) {
 		driver.findElement(ele).sendKeys(text);
-		Loggers.logger.info("typing: "+text+" .in the element tag: "+ driver.findElement(ele).getTagName());
+		Loggers.logger.info("typing: "+text+" in the element tag: "+ driver.findElement(ele).getTagName());
 	}
 	
 	public void clicking_enter(By ele) {
 		driver.findElement(ele).sendKeys(Keys.ENTER);
-		Loggers.logger.info("clicking enter");
+		Loggers.logger.info("clicking enter on element tag: " + driver.findElement(ele).getTagName());
 	}
 	
 	public void clicking_arrow_up_key(By ele) {
@@ -113,14 +113,7 @@ public class CustomActions {
 		driver.switchTo().alert();
 	}
 	
-//	public void handle_multiple_windows(int index) {
-//		WebElement eee = null;
-//		for (int i=0; i<driver.getWindowHandles().size();i++) {
-//			if(i==index) {
-//				driver.switchTo().window(driv)
-//			}
-//			
-//	}
+
 	public boolean is_element_displayed(By ele) {
 		return driver.findElement(ele).isDisplayed();
 	}

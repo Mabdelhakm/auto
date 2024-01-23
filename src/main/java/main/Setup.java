@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -52,8 +51,8 @@ public class Setup {
 
 		driver.get(prop.getProperty("url"));
 		Loggers.logger.info("navigate to " + prop.getProperty("url"));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-		custom_actions = new CustomActions(driver);
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+		
 	}
 
 	public Actions selenium_built_in_actions() {

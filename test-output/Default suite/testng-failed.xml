@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="training.re">
+      <class name="tests.Tests">
         <methods>
           <include name="initialize_browser"/>
+          <include name="successfull_login"/>
           <include name="close_browser"/>
-          <include name="miafshvhsdvkfhrsafaoifasliufdctyvausd"/>
         </methods>
-      </class> <!-- training.re -->
+      </class> <!-- tests.Tests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -26,13 +26,13 @@ public class Allure extends Setup implements ITestListener {
 		save_logs(method_name(result) + "test completed");
 	}
 
-	 @Attachment(value = "Page screenshot", type = "image/png")
+	@Attachment(value = "Page screenshot", type = "image/png")
 	private byte[] take_screenshot() {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 	@Attachment(value = "method name", type = "text/plain")
-	private String save_logs( String message) {
+	private String save_logs(String message) {
 		return message;
 	}
 
