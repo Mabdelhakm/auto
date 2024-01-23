@@ -12,8 +12,8 @@ public class Edge {
 		EdgeOptions options = new EdgeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new EdgeDriver(options);
-		Allure.step("start edge");
-		Loggers.logger.info("start edge");
+		Allure.step("start edge browser");
+		Loggers.logger.info("start edge browser");
 		return driver;
 	}
 }

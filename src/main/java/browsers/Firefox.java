@@ -12,8 +12,8 @@ public class Firefox {
 	public static WebDriver init_firefox() {
 		FirefoxOptions options = new FirefoxOptions();
 		WebDriver driver = new FirefoxDriver(options);
-		Allure.step("start fire fox");
-		Loggers.logger.info("start fire fox");
+		Allure.step("start fire fox browser");
+		Loggers.logger.info("start fire fox browser");
 		return driver;
 	}
 }

@@ -1,7 +1,6 @@
 package tests;
 
 import org.testng.annotations.Test;
-
 import main.Setup;
 import pages.HomeScreen;
 import pages.SingInPage;
