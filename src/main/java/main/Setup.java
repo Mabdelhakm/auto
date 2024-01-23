@@ -48,7 +48,7 @@ public class Setup {
 		} else if (prop.getProperty("browser").trim().toLowerCase().equals("firefox")) {
 			driver = Firefox.init_firefox();
 		}
-
+		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
 		Loggers.logger.info("navigate to " + prop.getProperty("url"));
 //		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));

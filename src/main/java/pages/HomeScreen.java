@@ -15,6 +15,6 @@ public class HomeScreen extends Setup {
 		getCustomActions().explicit_wait_till_visible(sign_in_button, 3);
 		getCustomActions().clicking_element(sign_in_button);
 		Allure.step("clicking home page sign in button");
-		Loggers.logger.info("clicking the home page sign in button");
+		Loggers.logger.info("clicking the home page sign in button link");
 	}
 }
