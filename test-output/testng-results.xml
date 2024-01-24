@@ -1,21 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="1" total="4" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-23T22:41:11 EET" name="Default suite" finished-at="2024-01-23T22:41:19 EET" duration-ms="8139">
+  <suite started-at="2024-01-24T21:43:17 EET" name="Default suite" finished-at="2024-01-24T21:43:37 EET" duration-ms="19856">
     <groups>
     </groups>
-    <test started-at="2024-01-23T22:41:11 EET" name="Default test" finished-at="2024-01-23T22:41:19 EET" duration-ms="8139">
+    <test started-at="2024-01-24T21:43:17 EET" name="Default test" finished-at="2024-01-24T21:43:37 EET" duration-ms="19856">
       <class name="tests.Tests">
-        <test-method is-config="true" signature="initialize_browser()[pri:0, instance:tests.Tests@4278284b]" started-at="2024-01-23T22:41:11 EET" name="initialize_browser" finished-at="2024-01-23T22:41:15 EET" duration-ms="3986" status="PASS">
+        <test-method is-config="true" signature="initialize_browser()[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:18 EET" name="initialize_browser" finished-at="2024-01-24T21:43:21 EET" duration-ms="3179" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize_browser -->
-        <test-method signature="successfull_login()[pri:0, instance:tests.Tests@4278284b]" started-at="2024-01-23T22:41:15 EET" name="successfull_login" finished-at="2024-01-23T22:41:19 EET" duration-ms="3914" status="PASS">
+        <test-method signature="failed_login(java.lang.String,java.lang.String)[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:21 EET" name="failed_login" data-provider="wrongdata1" finished-at="2024-01-24T21:43:24 EET" duration-ms="3335" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[salah1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[efsd]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- successfull_login -->
-        <test-method is-config="true" signature="close_browser()[pri:0, instance:tests.Tests@4278284b]" started-at="2024-01-23T22:41:19 EET" name="close_browser" finished-at="2024-01-23T22:41:19 EET" duration-ms="146" status="PASS">
+        </test-method> <!-- failed_login -->
+        <test-method is-config="true" signature="close_browser()[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:24 EET" name="close_browser" finished-at="2024-01-24T21:43:25 EET" duration-ms="167" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close_browser -->
+        <test-method is-config="true" signature="initialize_browser()[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:25 EET" name="initialize_browser" finished-at="2024-01-24T21:43:27 EET" duration-ms="2446" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize_browser -->
+        <test-method signature="failed_login(java.lang.String,java.lang.String)[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:27 EET" name="failed_login" data-provider="wrongdata1" finished-at="2024-01-24T21:43:30 EET" duration-ms="3258" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[salah2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[dsfx]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- failed_login -->
+        <test-method is-config="true" signature="close_browser()[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:30 EET" name="close_browser" finished-at="2024-01-24T21:43:30 EET" duration-ms="143" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close_browser -->
+        <test-method is-config="true" signature="initialize_browser()[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:30 EET" name="initialize_browser" finished-at="2024-01-24T21:43:33 EET" duration-ms="2322" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize_browser -->
+        <test-method signature="failed_login(java.lang.String,java.lang.String)[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:33 EET" name="failed_login" data-provider="wrongdata1" finished-at="2024-01-24T21:43:37 EET" duration-ms="3791" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[salah3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[vxc]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- failed_login -->
+        <test-method is-config="true" signature="close_browser()[pri:0, instance:tests.Tests@6d07a63d]" started-at="2024-01-24T21:43:37 EET" name="close_browser" finished-at="2024-01-24T21:43:37 EET" duration-ms="158" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close_browser -->

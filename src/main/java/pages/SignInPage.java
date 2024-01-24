@@ -5,7 +5,7 @@ import io.qameta.allure.Allure;
 import main.Loggers;
 import main.Setup;
 
-public class SingInPage extends Setup {
+public class SignInPage extends Setup {
 
 	By username_field = By.id("login");
 	By password_field = By.id("password");
