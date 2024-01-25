@@ -8,11 +8,15 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ReadExcel {
+public class ReadNewExcelFiles {
 	File f;
 	XSSFWorkbook wb;
 	XSSFSheet sheet;
 	XSSFRow row;
+	String sheetName;
+	public ReadNewExcelFiles(String sheetName) {
+		this.sheetName=sheetName;
+	}
 	public Object[][] read_excel() {
 		//define xlsx path and read the workbook
 		f = new File(System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator
@@ -25,7 +29,7 @@ public class ReadExcel {
 			e.printStackTrace();
 		}
 		//define the required sheet
-		sheet = wb.getSheet("sheet1");
+		sheet = wb.getSheet(sheetName);
 		//initialize varibles with number of rows -1 [the header] and the number of rows
 		int num_of_rows = sheet.getPhysicalNumberOfRows();
 		int num_of_cols = sheet.getRow(0).getLastCellNum();
