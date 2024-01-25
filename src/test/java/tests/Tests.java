@@ -1,8 +1,12 @@
 package tests;
 
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import main.Loggers;
 import main.Setup;
 import pages.HomeScreen;
 import pages.SignInPage;
@@ -25,7 +29,7 @@ public class Tests extends Setup {
 
 	@Test(dataProvider = "wrongdata2")
 	public void failed_login(String user) {
-		String users[]=user.split(",");
+		String users[] = user.split(",");
 		homescreen = new HomeScreen();
 		sign_in = new SignInPage();
 		homescreen.clickingTheSignInButton();
@@ -46,11 +50,9 @@ public class Tests extends Setup {
 		return ex;
 	}
 
-	
-	
 	@DataProvider(name = "wrongdata2")
-	public Object[] wrong_json_data() {
-		ReadJson re= new ReadJson();
+	public Object[] wrong_json_data() throws IOException, ParseException {
+		ReadJson re = new ReadJson();
 		Object[] ex = re.read_json();
 		return ex;
 	}
