@@ -1,0 +1,5 @@
+allure-results/
+test-output/
+target/
+
+testng2.xml
