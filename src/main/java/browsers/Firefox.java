@@ -11,7 +11,8 @@ public class Firefox {
 
 	public  WebDriver init_firefox() {
 		FirefoxOptions options = new FirefoxOptions();
-//		options.addArguments("--headless");
+		options.addArguments("--headless");
+		options.addArguments("--window-size=1280,800");
 		WebDriver driver = new FirefoxDriver(options);
 		Allure.step("start fire fox browser");
 		Loggers.logger.info("start fire fox browser");

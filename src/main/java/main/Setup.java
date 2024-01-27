@@ -17,7 +17,7 @@ import browsers.Firefox;
 import io.qameta.allure.Allure;
 
 public class Setup {
-	public static WebDriver driver;
+	public  static WebDriver driver;
 	private FileReader fr;
 	public Properties prop;
 	private Actions built_in_actions;
@@ -25,7 +25,7 @@ public class Setup {
 
 	@Parameters("browser")
 	@BeforeMethod
-	public void initialize_browser() {
+	public void initialize_browser(String browser) {
 		try {
 			fr = new FileReader(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main"
 					+ File.separator + "resources" + File.separator + "config.properties");
@@ -42,17 +42,17 @@ public class Setup {
 			Loggers.logger.fatal("can't read the configuration file");
 		}
 
-		if (prop.getProperty("browser").trim().toLowerCase().equals("chrome")) {
+		if (browser.equals("chrome")) {
 			Chrome ch=new Chrome();
 			driver =  ch.init_chrome();
 			SafeThread.setDriver( driver);
 		} 
-		else if (prop.getProperty("browser").trim().toLowerCase().equals("edge")) {
+		else if (browser.equals("edge")) {
 			Edge ed=new Edge();
 			driver =  ed.init_edge();
 			SafeThread.setDriver( driver);
 		} 
-		else if (prop.getProperty("browser").trim().toLowerCase().equals("firefox")) {
+		else if (browser.equals("firefox")) {
 			Firefox ff=new Firefox();
 			driver = ff.init_firefox();
 			SafeThread.setDriver(driver);
