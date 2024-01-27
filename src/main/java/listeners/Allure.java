@@ -5,6 +5,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import io.qameta.allure.Attachment;
+import main.SafeThread;
 import main.Setup;
 
 public class Allure extends Setup implements ITestListener {
@@ -27,7 +28,7 @@ public class Allure extends Setup implements ITestListener {
 
 	@Attachment(value = "Page screenshot", type = "image/png")
 	private byte[] take_screenshot() {
-		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+		return ((TakesScreenshot) SafeThread.getDriver()).getScreenshotAs(OutputType.BYTES);
 	}
 
 	@Attachment(value = "method name", type = "text/plain")

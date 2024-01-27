@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
 import browsers.Chrome;
 import browsers.Edge;
 import browsers.Firefox;
@@ -21,6 +23,7 @@ public class Setup {
 	private Actions built_in_actions;
 	private CustomActions custom_actions;
 
+	@Parameters("browser")
 	@BeforeMethod
 	public void initialize_browser() {
 		try {
@@ -40,14 +43,22 @@ public class Setup {
 		}
 
 		if (prop.getProperty("browser").trim().toLowerCase().equals("chrome")) {
-			driver = Chrome.init_chrome();
-		} else if (prop.getProperty("browser").trim().toLowerCase().equals("edge")) {
-			driver = Edge.init_edge();
-		} else if (prop.getProperty("browser").trim().toLowerCase().equals("firefox")) {
-			driver = Firefox.init_firefox();
+			Chrome ch=new Chrome();
+			driver =  ch.init_chrome();
+			SafeThread.setDriver( driver);
+		} 
+		else if (prop.getProperty("browser").trim().toLowerCase().equals("edge")) {
+			Edge ed=new Edge();
+			driver =  ed.init_edge();
+			SafeThread.setDriver( driver);
+		} 
+		else if (prop.getProperty("browser").trim().toLowerCase().equals("firefox")) {
+			Firefox ff=new Firefox();
+			driver = ff.init_firefox();
+			SafeThread.setDriver(driver);
 		}
-		driver.manage().window().maximize();
-		driver.get(prop.getProperty("url"));
+//		driver.manage().window().maximize();
+		SafeThread.getDriver().get(prop.getProperty("url"));
 		Loggers.logger.info("navigate to " + prop.getProperty("url"));
 	}
 
@@ -65,7 +76,7 @@ public class Setup {
 		if (custom_actions instanceof CustomActions) {
 			return custom_actions;
 		} else {
-			custom_actions = new CustomActions(driver);
+			custom_actions = new CustomActions();
 			return custom_actions;
 		}
 
@@ -75,14 +86,16 @@ public class Setup {
 		if (built_in_actions instanceof Actions) {
 			return built_in_actions;
 		} else {
-			built_in_actions = new Actions(driver);
+			built_in_actions = new Actions(SafeThread.getDriver());
 			return built_in_actions;
 		}
 	}
 
 	@AfterMethod
 	public void close_browser() {
-		driver.quit();
+		
+		SafeThread.getDriver().quit();
+		SafeThread.unload();
 		Allure.step("close browser");
 		Loggers.logger.info("close browser");
 	}

@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.Tests">
+      <class name="tests.dfc">
         <methods>
           <include name="initialize_browser"/>
           <include name="close_browser"/>
-          <include name="failed_login" invocation-numbers="1 3"/>
+          <include name="dfgh"/>
         </methods>
-      </class> <!-- tests.Tests -->
+      </class> <!-- tests.dfc -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -9,8 +9,9 @@ import main.Loggers;
 
 public class Firefox {
 
-	public static WebDriver init_firefox() {
+	public  WebDriver init_firefox() {
 		FirefoxOptions options = new FirefoxOptions();
+//		options.addArguments("--headless");
 		WebDriver driver = new FirefoxDriver(options);
 		Allure.step("start fire fox browser");
 		Loggers.logger.info("start fire fox browser");

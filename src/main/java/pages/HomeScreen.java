@@ -9,7 +9,7 @@ public class HomeScreen extends Setup {
 	By sign_in_button = By.xpath("(//a[text()='Sign in']//parent::li)[1]");
 
 	public void clickingTheSignInButton() {
-		getCustomActions().explicit_wait_till_visible(sign_in_button, 3);
+		getCustomActions().explicit_wait_till_visible(sign_in_button, 10);
 		getCustomActions().clicking_element(sign_in_button);
 		Allure.step("clicking home page sign in button");
 		Loggers.logger.info("clicking the home page sign in button link");

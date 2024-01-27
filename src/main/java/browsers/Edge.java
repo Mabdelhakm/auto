@@ -8,8 +8,9 @@ import io.qameta.allure.Allure;
 import main.Loggers;
 
 public class Edge {
-	public static WebDriver init_edge() {
+	public  WebDriver init_edge() {
 		EdgeOptions options = new EdgeOptions();
+//		options.addArguments("--headless");
 		options.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new EdgeDriver(options);
 		Allure.step("start edge browser");
