@@ -1,5 +1,7 @@
-allure-results/
-test-output/
-target/
+/allure-results
+/test-output
+/target
 
 testng2.xml
+classpath.classpath
+project.project
