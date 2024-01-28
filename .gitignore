@@ -1,6 +1,6 @@
 /allure-results
 /test-output
-/target
+
 .settings/
 testng2.xml
 # Eclipse Core
