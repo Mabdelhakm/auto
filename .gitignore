@@ -7,3 +7,4 @@ testng2.xml
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+/bin/
