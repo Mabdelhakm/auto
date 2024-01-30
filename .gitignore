@@ -4,4 +4,6 @@
 .settings/
 testng2.xml
 
+.project
+.classpath
 /bin/
