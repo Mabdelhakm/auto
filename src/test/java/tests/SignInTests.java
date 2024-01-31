@@ -12,7 +12,7 @@ import pages.SignInPage;
 import utils.ReadJson;
 import utils.ReadNewExcelFiles;
 
-public class Tests extends Setup {
+public class SignInTests extends Setup {
 	HomeScreen homescreen;
 	SignInPage sign_in;
 

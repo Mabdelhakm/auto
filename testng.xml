@@ -7,7 +7,7 @@
 	<test name="fire fox tests">
 		<parameter name="browser" value="firefox"></parameter>
 		<classes>
-			<class name="tests.Tests" />
+			<class name="SignInTests.Tests" />
 		</classes>
 	</test> <!-- Test -->
 		<test  name="chrome tests">
