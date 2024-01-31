@@ -7,19 +7,19 @@
 	<test name="fire fox tests">
 		<parameter name="browser" value="firefox"></parameter>
 		<classes>
-			<class name="SignInTests.Tests" />
+			<class name="tests.SignInTests" />
 		</classes>
 	</test> <!-- Test -->
 		<test  name="chrome tests">
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="tests.Tests" />
+			<class name="tests.SignInTests" />
 		</classes>
 	</test> <!-- Test -->
 		<test  name="edge tests">
 		<parameter name="browser" value="edge"></parameter>
 		<classes>
-			<class name="tests.Tests" />
+			<class name="tests.SignInTests" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
