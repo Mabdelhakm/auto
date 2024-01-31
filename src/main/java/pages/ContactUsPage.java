@@ -7,13 +7,13 @@ import main.Loggers;
 import main.Setup;
 
 public class ContactUsPage extends Setup{
-	By name_field=By.id("obij2aulqyau");
-	By phone_number_field=By.id("ozp7022vqhe");
-	By email_field=By.id("oub62hlfgjwf");
-	By company_field=By.id("o291di1too2s");
-	By subject_field=By.id("oqsf4m51acj");
-	By question_field=By.id("oyeqnysxh10b");
-	By submit_button=By.cssSelector(".btn btn-primary.s_website_form_send o_default_snippet_text");
+	By name_field=By.id("contact1");
+	By phone_number_field=By.id("contact2");
+	By email_field=By.id("contact3");
+	By company_field=By.id("contact4");
+	By subject_field=By.id("contact5");
+	By question_field=By.id("contact6");
+	By submit_button=By.xpath("//a[text()='Submit']");
 	public void typing_in_name_field(String text) {
 		getCustomActions().explicit_wait_till_visible(name_field, 10);
 		getCustomActions().typing_in_element(name_field, text);
@@ -31,7 +31,7 @@ public class ContactUsPage extends Setup{
 	
 	public void typing_in_email_field(String text) {
 		getCustomActions().explicit_wait_till_visible(email_field, 10);
-		getCustomActions().typing_in_element(phone_number_field, text);
+		getCustomActions().typing_in_element(email_field, text);
 		Allure.step("typing: "+ text +" in the email field");
 		Loggers.logger.info("typing: "+ text +" in the email field");
 	}
