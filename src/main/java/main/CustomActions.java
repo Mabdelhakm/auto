@@ -1,20 +1,16 @@
 package main;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CustomActions extends Setup {
-//	private WebDriver driver;
-//
-//	public CustomActions(WebDriver driver) {
-//		this.driver = driver;
-//	}
-
 	public void explicit_wait_till_visible(By ele, int time) {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ele));
@@ -74,6 +70,11 @@ public class CustomActions extends Setup {
 		}
 		return elements;
 	}
+	
+	public WebElement return_last_element_from_list(By ele) {
+		List<WebElement> elements = SafeThread.getDriver().findElements(ele);
+		return elements.get(elements.size()-1);
+	}
 
 	public void return_parent_frame() {
 		SafeThread.getDriver().switchTo().parentFrame();
@@ -106,5 +107,20 @@ public class CustomActions extends Setup {
 
 	public boolean is_element_enabled(By ele) {
 		return SafeThread.getDriver().findElement(ele).isEnabled();
+	}
+	
+	public void drop_down_list_by_index(By ele,int index) {
+		Select select=new Select(SafeThread.getDriver().findElement(ele));
+		select.selectByIndex(index);
+	}
+	
+	public void drop_down_list_by_value(By ele,String text) {
+		Select select=new Select(SafeThread.getDriver().findElement(ele));
+		select.selectByValue(text);
+	}
+	
+	public boolean is_text_correct(By ele,String text) {
+		 String txt=SafeThread.getDriver().findElement(ele).getText();
+		 if(txt.toLowerCase().contains(text)) return true;  return false;
 	}
 }
