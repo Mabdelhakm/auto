@@ -5,9 +5,13 @@
 		<listener class-name="listeners.Allure"></listener>
 	</listeners>
 	<test name="Test">
-		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="tests.ContactUsTests" />
+			<class name="tests.PurchaseTests">
+				<methods>
+					<include name="add_product_no_taxes"></include>
+				</methods>
+			</class>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -59,6 +60,7 @@ public class Setup {
 			SafeThread.setDriver(driver);
 		}
 //		driver.manage().window().maximize();
+		SafeThread.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		SafeThread.getDriver().get(prop.getProperty("url"));
 		Loggers.logger.info("navigate to " + prop.getProperty("url"));
 	}
