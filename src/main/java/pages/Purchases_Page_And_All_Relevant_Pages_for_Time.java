@@ -1,12 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
+
 import io.qameta.allure.Allure;
 import main.Loggers;
 import main.Setup;
 
 public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
+	By x_sign=By.xpath("//span[@class='min-w-0 text-truncate']");
 	By first_comapny_record = By.xpath(
 			"(//td[@class='o_data_cell cursor-pointer o_field_cell o_list_many2one o_required_modifier o_readonly_modifier'])[1]");
 	By home_side_menu = By.xpath("//button[@title='Home Menu']");
@@ -65,7 +66,10 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	By invtitle = By.xpath("//span[@class='min-w-0 text-truncate']");
 	By products_selection = By.xpath("(//div[@class='o-autocomplete dropdown'])[3]//child::ul");
 	By wasting_time = By.name("purchase_delivery_invoice");
-	By table_body=By.tagName("tbody");
+	By table_body = By.tagName("tbody");
+	By text_not_found=By.xpath("//p[@class='o_view_nocontent_smiling_face' ]");
+	By inv_cancel_search=By.xpath("(//button[@class='o_facet_remove oi oi-close btn btn-link py-0 px-2 text-danger' ])[3]");
+	By vendor_selection_elements=By.xpath("//li[@class='o-autocomplete--dropdown-item ui-menu-item d-block']");
 	public boolean check_done_button(String text) {
 		getCustomActions().explicit_wait_till_attribute_to_be(done_button, "aria-label", "Current", 10);
 		if (getCustomActions().get_element_attribute_aria_label(done_button).equals(text))
@@ -75,21 +79,9 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	}
 
 	public void select_vendor(int index) {
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		getCustomActions().explicit_wait_till_visible(vendor_selection, 10);
 		getCustomActions().clicking_element(vendor_selection);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		getCustomActions().explicit_wait_till_visible(vendor_elements, 10);
+		getCustomActions().explicit_wait_til_property_not_be(vendor_elements, 10,"childElementCount","1");
 		if (index == 0) {
 			getCustomActions().clicking_enter(vendor_selection);
 		} else {
@@ -98,6 +90,7 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 			}
 		}
 		getCustomActions().clicking_enter(vendor_selection);
+		getCustomActions().explicit_wait_till_invisibility(vendor_elements, 10);
 	}
 
 	public void select_vendor_with_search(int index, String text) {
@@ -120,21 +113,20 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 
 	public boolean check_search_field_inventory_page(String text) {
 		getCustomActions().explicit_wait_till_visible(search_criteria, 10);
+		getCustomActions().explicit_wait_till_visible(inventory_first_record_source_document, 10);
 		return getCustomActions().is_text_correct(search_criteria, text.toLowerCase());
 	}
 
 	public boolean check_search_field_purchase_page(String text) {
 		getCustomActions().explicit_wait_till_visible(search_criteria_purchase_page, 10);
+//		getCustomActions().explicit_wait_till_visible(inventory_first_record_source_document, 10);
+
 		return getCustomActions().is_text_correct(search_criteria_purchase_page, text.toLowerCase());
 	}
 
 	public boolean check_company_column() {
-		try {
-			getCustomActions().is_element_displayed(compny_column);
-			return true;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
+			return getCustomActions().is_element_displayed(compny_column);
+
 
 	}
 
@@ -158,7 +150,26 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	public void clicking_confirm_payment() {
 		getCustomActions().explicit_wait_till_visible(confirm_paymnet, 20);
 		getCustomActions().clicking_element(confirm_paymnet);
+		getCustomActions().explicit_wait_till_visible(register_payment_button, 20);
 	}
+	
+	public void no_search(String text) {
+		if(getCustomActions().is_element_displayed(text_not_found)==true) {
+			getCustomActions().clicking_element(inv_cancel_search);			
+			getCustomActions().explicit_wait_till_visible(inventory_first_record_source_document, 20);
+			getCustomActions().typing_in_element(inventory_page_search_field, text);
+			getCustomActions().clicking_enter(inventory_page_search_field);
+			Allure.step("typing: " + text + " in the type_quantity field");
+			Loggers.logger.info("typing: " + text + " in the type_quantity field");
+			getCustomActions().explicit_wait_til_property_changes(table_body, 20, "childElementCount", "4");
+			
+		}
+	}
+	
+	public boolean no_register( ) {
+		return getCustomActions().is_element_displayed(register_payment_button) ;
+	}
+
 
 	public void clicking_tax() {
 		getCustomActions().explicit_wait_till_visible(tax_field, 20);
@@ -175,7 +186,8 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 		getCustomActions().clicking_element(activity);
 	}
 
-	public void clicking_invenetory_page_first_record_source_document() {
+	public void clicking_invenetory_page_first_record_source_document(String text) {
+		getCustomActions().search_elements_fro_text(inventory_first_record_source_document, text);
 		getCustomActions().explicit_wait_till_visible(inventory_first_record_source_document, 20);
 		getCustomActions().clicking_element(inventory_first_record_source_document);
 	}
@@ -195,8 +207,10 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	public void type_bill_date(String text) {
 		getCustomActions().explicit_wait_till_visible(bill_date_field, 20);
 		getCustomActions().typing_in_element(bill_date_field, text);
+		getCustomActions().explicit_wait_till_visible(x_sign, 10);
 		Allure.step("typing: " + text + " in the bill date field");
 		Loggers.logger.info("typing: " + text + " in the bill date field");
+
 	}
 
 	public void type_quantity(String text) {
@@ -207,25 +221,24 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	}
 
 	public void type_inventory_page_searvh_field(String text) {
+
 		getCustomActions().explicit_wait_till_visible(inventory_page_search_field, 20);
 		getCustomActions().typing_in_element(inventory_page_search_field, text);
 		getCustomActions().clicking_enter(inventory_page_search_field);
 		Allure.step("typing: " + text + " in the type_quantity field");
 		Loggers.logger.info("typing: " + text + " in the type_quantity field");
-		getCustomActions().explicit_wait_til_property_changes(table_body, 20,"childElementCount", "4");
+		getCustomActions().explicit_wait_til_property_changes(table_body, 20, "childElementCount", "4");
 	}
 
 	public void select_product(int index) {
+
 		getCustomActions().explicit_wait_till_visible(type_product_name, 20);
 		getCustomActions().clicking_element(type_product_name);
 		getCustomActions().explicit_wait_till_visible(products_selection, 20);
-
+		getCustomActions().explicit_wait_til_property_not_be(products_selection, 10,"childElementCount","1");
 		for (int i = 0; i < index; i++) {
-
 			getCustomActions().clicking_arrow_down_key(type_product_name);
-
 		}
-
 		getCustomActions().clicking_enter(type_product_name);
 	}
 
@@ -260,6 +273,7 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	public void click_home_side_menu() {
 		getCustomActions().explicit_wait_till_visible(home_side_menu, 20);
 		getCustomActions().clicking_element(home_side_menu);
+		getCustomActions().explicit_wait_till_visible(inventory_link_side_menu, 20);
 		Allure.step("clickin on home side menu");
 		Loggers.logger.info("clicking on home side menu ");
 	}
@@ -337,6 +351,7 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 		getCustomActions().clicking_element(add_a_product_rfq_page);
 		Allure.step("clickin on add_a_product");
 		Loggers.logger.info("clicking on add_a_product ");
+
 	}
 
 	public boolean check_add_a_product() {
@@ -345,9 +360,12 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 
 	}
 
-	public void click_confirm_order_button(String text) {
+	public boolean check_register_payment() {
+		return getCustomActions().is_element_displayed(register_payment_button);
 
-		getCustomActions().explicit_wait_til_property_changes(quantity_amount, 20,"value", "1.00");
+	}
+	public void click_confirm_order_button(String text) {
+		getCustomActions().explicit_wait_til_property_changes(quantity_amount, 20, "value", "1.00");
 		getCustomActions().explicit_wait_till_visible(confirm_order_button, 20);
 		getCustomActions().clicking_element(confirm_order_button);
 		getCustomActions().explicit_wait_till_text_disappears(purchase_number, 20, text);
@@ -377,6 +395,9 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 		Loggers.logger.info("clicking on validate_button ");
 	}
 
+	
+	
+
 	public void click_receipt_link() {
 		getCustomActions().explicit_wait_till_visible(receipt_link, 20);
 		getCustomActions().clicking_element(receipt_link);
@@ -401,6 +422,7 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	public String get_purchase_order() {
 		getCustomActions().explicit_wait_till_visible(purchase_number, 20);
 		return getCustomActions().get_text(purchase_number);
+		
 	}
 
 	public boolean check_purchase_order() {

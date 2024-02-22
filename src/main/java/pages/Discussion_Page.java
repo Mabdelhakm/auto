@@ -8,20 +8,16 @@ import main.Setup;
 
 public class Discussion_Page extends Setup {
 
-	By inbox_messages_link = By.xpath(
-			"(//div[@class='me-2 text-truncate'])[1]");
+	By inbox_messages_link = By.xpath("(//div[@class='me-2 text-truncate'])[1]");
 	By check_inbox_page = By.xpath(
 			"//input[@class='o-mail-AutoresizeInput o_input px-1 border-1 text-truncate o-mail-Discuss-threadName lead fw-bold flex-shrink-1 text-dark py-0' and @title='Inbox']");
 	By check_starred_page = By.xpath(
 			"//input[@class='o-mail-AutoresizeInput o_input px-1 border-1 text-truncate o-mail-Discuss-threadName lead fw-bold flex-shrink-1 text-dark py-0' and @title='Starred']");
 	By check_history_page = By.xpath(
 			"//input[@class='o-mail-AutoresizeInput o_input px-1 border-1 text-truncate o-mail-Discuss-threadName lead fw-bold flex-shrink-1 text-dark py-0' and @title='History']");
-	By history_messages_link = By.xpath(
-			"(//div[@class='me-2 text-truncate'])[3]");
-	By starred_messages_link = By.xpath(
-			"(//button[@class='o-mail-DiscussSidebar-item btn d-flex align-items-center py-1 px-0 border-0 rounded-0 fw-normal text-reset bg-inherit'])[1]");
-	By general_channel_link = By.xpath(
-			"//span[@class='ms-3 me-2 text-truncate']");
+	By history_messages_link = By.xpath("(//div[@class='me-2 text-truncate'])[3]");
+	By starred_messages_link = By.xpath("(//div[@class='me-2 text-truncate'])[2]");
+	By general_channel_link = By.xpath("//span[text()='general']");
 	By message_text_area = By.xpath(
 			"//textarea[@class='o-mail-Composer-input form-control bg-view px-3 border-0 rounded-3 shadow-none overflow-auto']");
 	By send_message_button = By.xpath(
@@ -34,7 +30,7 @@ public class Discussion_Page extends Setup {
 
 	By pinned_messages_icon = By.name("pinned-messages");
 	By right_screen_check = By.xpath("//p[@class='fs-6 fw-bold text-uppercase m-0 text-700 flex-grow-1']");
-	By start_meeting_button=By.xpath("//button[@class='btn btn-primary rounded']");
+	By start_meeting_button = By.xpath("//button[@class='btn btn-primary rounded']");
 	By search_messages_icon = By.name("search-messages");
 	By search_messages_field = By.xpath("//input[@class='o_searchview_input flex-grow-1 w-auto border-0']");
 	By search_messages_search_buton = By.xpath("//button[@class='btn btn-outline-primary']");
@@ -46,8 +42,11 @@ public class Discussion_Page extends Setup {
 	By voice_settings_icon = By.name("settings");
 	By input_device_selection = By.name("inputDevice");
 	By push_to_tal_checkbox = By.xpath("(//input[@class='form-check-input'])[1]");
-	By last_text=By.xpath("//div[@class='d-flex flex-column position-relative flex-grow-1 justify-content-end']//p[last()]");
-	By messages_parent=By.xpath("//div[@class='d-flex flex-column position-relative flex-grow-1 justify-content-end']");
+	By last_text = By
+			.xpath("//div[@class='d-flex flex-column position-relative flex-grow-1 justify-content-end']//p[last()]");
+	By messages_parent = By
+			.xpath("//div[@class='d-flex flex-column position-relative flex-grow-1 justify-content-end']");
+
 	public void click_history_messages_link() {
 		getCustomActions().explicit_wait_till_visible(history_messages_link, 15);
 		getCustomActions().clicking_element(history_messages_link);
@@ -77,18 +76,17 @@ public class Discussion_Page extends Setup {
 		Loggers.logger.info("click on the general channel link");
 	}
 
-	public boolean check_inbox_page( ) {
+	public boolean check_inbox_page() {
 		getCustomActions().explicit_wait_till_visible(check_inbox_page, 15);
 		return getCustomActions().is_element_displayed(check_inbox_page);
 	}
-	
+
 	public boolean check_starred_page() {
 		getCustomActions().explicit_wait_till_visible(check_starred_page, 15);
 		return getCustomActions().is_element_displayed(check_starred_page);
 	}
-	
-	
-	public boolean check_history_page( ) {
+
+	public boolean check_history_page() {
 		getCustomActions().explicit_wait_till_visible(check_history_page, 15);
 		return getCustomActions().is_element_displayed(check_history_page);
 	}
@@ -101,23 +99,19 @@ public class Discussion_Page extends Setup {
 	}
 
 	public void send_message() {
-
+		getCustomActions().explicit_wait_till_visible(messages_parent, 10);
+		String s = getCustomActions().get_certain_property_value(messages_parent, "childElementCount");
 		getCustomActions().explicit_wait_til_property_changes(send_message_button, 15, "disabled", "false");
 		getCustomActions().clicking_element(send_message_button);
 		getCustomActions().explicit_wait_til_property_changes(send_message_button, 15, "disabled", "true");
+		getCustomActions().explicit_wait_til_property_not_be(messages_parent, 10, "childElementCount", s);
 		Allure.step("click on the send message button");
 		Loggers.logger.info("click on the send message button");
 
-
 	}
 
-	public String check_last_message( ) {
-		try {
-		Thread.sleep(2000);
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	public String check_last_message() {
+
 		return getCustomActions().return_last_element_from_list(all_messages).getText();
 
 	}
@@ -137,14 +131,11 @@ public class Discussion_Page extends Setup {
 		Loggers.logger.info("click on mute_notifications_radio_button");
 
 	}
-	
+
 	public boolean check_notifications() {
 		getCustomActions().explicit_wait_till_visible(mute_notifications_radio_button, 15);
 		return getCustomActions().is_element_enabled(mute_notifications_radio_button);
 	}
-	
-	
-	
 
 	public void click_add_users_icon() {
 		getCustomActions().explicit_wait_till_visible(add_users_icon, 15);
@@ -174,7 +165,7 @@ public class Discussion_Page extends Setup {
 		Loggers.logger.info("click on the pinned messagse icon");
 	}
 
-	public boolean check_pinned_message( ) {
+	public boolean check_pinned_message() {
 		getCustomActions().explicit_wait_till_visible(right_screen_check, 15);
 		return getCustomActions().is_element_displayed(right_screen_check);
 
@@ -219,13 +210,12 @@ public class Discussion_Page extends Setup {
 		Allure.step("select the audio type");
 		Loggers.logger.info("select the audio type");
 	}
-	
+
 	public String check_audio_drop_down_list() {
 		getCustomActions().explicit_wait_till_visible(input_device_selection, 15);
 		return getCustomActions().get_text_drop_down_list(input_device_selection);
 
 	}
-
 
 	public void check_push_to_talk() {
 		getCustomActions().explicit_wait_till_visible(push_to_tal_checkbox, 15);
@@ -240,7 +230,7 @@ public class Discussion_Page extends Setup {
 
 	public boolean check_page() {
 
-		getCustomActions().explicit_wait_till_visible(start_meeting_button, 20);
-		return getCustomActions().is_element_displayed(start_meeting_button);
+		getCustomActions().explicit_wait_till_visible(inbox_messages_link, 20);
+		return getCustomActions().is_element_displayed(inbox_messages_link);
 	}
 }

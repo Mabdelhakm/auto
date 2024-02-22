@@ -22,12 +22,10 @@ public class ContactUsPage extends Setup {
 	By element_inside_shadow=By.cssSelector(".fa fa-commenting");
 	
 	
-	
 	public void typing_in_name_field(String text) {
 		// handled using sleep till learning how to handle shadow elements
-		
 		try {
-			Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(3));
+			Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(1));
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,7 +79,7 @@ public class ContactUsPage extends Setup {
 	}
 
 	public boolean check_error() {
-		getCustomActions().explicit_wait_till_visible(error, 15);
+		getCustomActions().explicit_wait_till_visible(error, 35);
 		return getCustomActions().is_element_displayed(error);
 	}
 

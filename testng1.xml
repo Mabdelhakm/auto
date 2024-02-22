@@ -5,13 +5,15 @@
 		<listener class-name="listeners.Allure"></listener>
 	</listeners>
 	<test name="Test">
-		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browser" value="edge"></parameter>
 		<classes>
-			<class name="tests.PurchaseTests">
-				<methods>
-					<include name="add_product_no_taxes"></include>
-				</methods>
-			</class>
+			<class name="tests.PurchaseTests"></class>
+			<class name="tests.Reset_Password_Tests"></class>
+			<class name="tests.DiscussionPageTests"></class>
+			<class name="tests.SignInTests"></class>
+			<class name="tests.ContactUsTests"></class>
+			<!--<class name="tests.SignupTests"></class> -->
+			<!-- will fail due to duplicate account -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -16,24 +17,27 @@ public class CustomActions extends Setup {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ele));
 	}
-	
+
 	public void explicit_wait_till_visible(WebElement ele, int time) {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
-	
-	
-	public void explicit_wait_til_property_changes(By ele, int time,String property,String value) {
-		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
-		wait.until(ExpectedConditions.domPropertyToBe(SafeThread.getDriver().findElement(ele),property,value));
-	}
-	
-	public void explicit_wait_til_property_changes(WebElement ele, int time,String property,String value) {
-		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
-		wait.until(ExpectedConditions.domPropertyToBe(ele,property,value));
-	}
-	
 
+	public void explicit_wait_til_property_changes(By ele, int time, String property, String value) {
+		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
+		wait.until(ExpectedConditions.domPropertyToBe(SafeThread.getDriver().findElement(ele), property, value));
+	}
+
+	public void explicit_wait_til_property_not_be(By ele, int time, String property, String value) {
+		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
+		wait.until(ExpectedConditions
+				.not(ExpectedConditions.domPropertyToBe(SafeThread.getDriver().findElement(ele), property, value)));
+	}
+
+	public void explicit_wait_til_property_changes(WebElement ele, int time, String property, String value) {
+		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
+		wait.until(ExpectedConditions.domPropertyToBe(ele, property, value));
+	}
 
 	public WebElement java_script_executor_shadow_host(By ele) {
 		JavascriptExecutor js = (JavascriptExecutor) SafeThread.getDriver();
@@ -56,7 +60,7 @@ public class CustomActions extends Setup {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(ele, text));
 	}
-	
+
 	public void explicit_wait_till_text_appears(WebElement ele, int time, String text) {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.textToBePresentInElement(ele, text));
@@ -94,7 +98,7 @@ public class CustomActions extends Setup {
 	}
 
 	public void clicking_arrow_down_key(By ele) {
-		SafeThread.getDriver().findElement(ele).sendKeys(Keys.DOWN);
+		SafeThread.getDriver().findElement(ele).sendKeys(Keys.ARROW_DOWN);
 	}
 
 	public void clicking_arrow_right_key(By ele) {
@@ -120,6 +124,17 @@ public class CustomActions extends Setup {
 			}
 		}
 		return elements;
+	}
+
+	public WebElement search_elements_fro_text(By ele, String text) {
+		WebElement element = null;
+		for (int i = 0; i < SafeThread.getDriver().findElements(ele).size(); i++) {
+			if (SafeThread.getDriver().findElements(ele).get(i).getText() == text) {
+				element = SafeThread.getDriver().findElements(ele).get(i);
+			}
+		}
+		return element;
+
 	}
 
 	public WebElement return_last_element_from_list(By ele) {
@@ -149,7 +164,11 @@ public class CustomActions extends Setup {
 	}
 
 	public boolean is_element_displayed(By ele) {
-		return SafeThread.getDriver().findElement(ele).isDisplayed();
+		try {
+			return SafeThread.getDriver().findElement(ele).isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 
 	}
 
@@ -169,6 +188,11 @@ public class CustomActions extends Setup {
 	public String get_text_drop_down_list(By ele) {
 		Select select = new Select(SafeThread.getDriver().findElement(ele));
 		return select.getFirstSelectedOption().getText();
+	}
+	
+	
+	public String get_certain_property_value(By ele,String property) {
+		return SafeThread.getDriver().findElement(ele).getDomProperty(property);
 	}
 
 	public void drop_down_list_by_value(By ele, String text) {

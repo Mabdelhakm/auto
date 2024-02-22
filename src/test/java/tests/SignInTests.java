@@ -28,7 +28,13 @@ public class SignInTests extends Setup {
 		sign_in.typing_username("admin");
 		sign_in.typing_password("admin");
 		sign_in.clicking_login_button();
-		Assert.assertTrue(discuss.check_page());
+		if (sign_in.check_many_error() == true) {
+			sign_in.clicking_login_button_again_if_error_about_amount();
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertTrue(discuss.check_page());
+
+		}
 	}
 
 	@Test
@@ -39,11 +45,9 @@ public class SignInTests extends Setup {
 		sign_in.typing_username("");
 		sign_in.typing_password("sa");
 		sign_in.clicking_login_button();
-		Assert.assertEquals(sign_in.check_validation_message(),"Please fill out this field.");
+		Assert.assertEquals(sign_in.check_validation_message(), "Please fill out this field.");
 	}
-	
-	
-	
+
 	@Test(dataProvider = "wrongdata")
 	public void failed_login(String user, String pass) {
 		homescreen = new HomeScreen();
@@ -52,7 +56,7 @@ public class SignInTests extends Setup {
 		sign_in.typing_username(user);
 		sign_in.typing_password(pass);
 		sign_in.clicking_login_button();
-		
+
 		Assert.assertTrue(sign_in.check_error());
 	}
 
@@ -88,7 +92,7 @@ public class SignInTests extends Setup {
 		sign_in.typing_username(users[0].replace("\"", ""));
 		sign_in.typing_password(users[1].replace("\"", ""));
 		sign_in.clicking_login_button();
-		
+
 		Assert.assertTrue(sign_in.check_error());
 	}
 

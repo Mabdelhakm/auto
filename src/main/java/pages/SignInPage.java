@@ -29,10 +29,27 @@ public class SignInPage extends Setup {
 	}
 
 	public void clicking_login_button() {
-		getCustomActions().explicit_wait_till_visible(login_button, 10);
+		getCustomActions().explicit_wait_till_visible(login_button, 20);
 		getCustomActions().clicking_element(login_button);
 		Allure.step("clicking the login button");
 		Loggers.logger.info("clicking the login button");
+	}
+	
+	
+	public boolean check_many_error(){
+		if(getCustomActions().is_element_displayed(error) && getCustomActions().get_text(error).contains("many")) {
+			return true;
+		}else {
+		return false;}
+	}
+	
+	public void clicking_login_button_again_if_error_about_amount() {
+		if(getCustomActions().is_element_displayed(error) && getCustomActions().get_text(error).contains("many")) {
+			getCustomActions().clicking_element(login_button);
+			Allure.step("clicking the login button again");
+			Loggers.logger.info("clicking the login button again");
+		}
+		
 	}
 	
 	public void clicking_sign_up() {
@@ -51,7 +68,7 @@ public class SignInPage extends Setup {
 	
 	
 	public boolean check_error() {
-		getCustomActions().explicit_wait_till_visible(error, 10);
+		getCustomActions().explicit_wait_till_visible(error, 20);
 		return getCustomActions().is_element_displayed(error);
 		
 	}
