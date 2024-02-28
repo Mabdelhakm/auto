@@ -18,7 +18,7 @@ import browsers.Firefox;
 import io.qameta.allure.Allure;
 
 public class Setup {
-	public  static WebDriver driver;
+	public static WebDriver driver;
 	private FileReader fr;
 	public Properties prop;
 	private Actions built_in_actions;
@@ -44,22 +44,16 @@ public class Setup {
 		}
 
 		if (browser.equals("chrome")) {
-			Chrome ch=new Chrome();
-			driver =  ch.init_chrome();
-			SafeThread.setDriver( driver);
-		} 
-		else if (browser.equals("edge")) {
-			Edge ed=new Edge();
-			driver =  ed.init_edge();
-			SafeThread.setDriver( driver);
-		} 
-		else if (browser.equals("firefox")) {
-			Firefox ff=new Firefox();
-			driver = ff.init_firefox();
-			SafeThread.setDriver(driver);
+			Chrome ch = new Chrome();
+			driver = ch.init_chrome();
+		} else if (browser.equals("edge")) {
+			Edge ed = new Edge();
+			driver = ed.init_edge();
+		} else if (browser.equals("firefox")) {
+			Firefox ff = new Firefox();
+			driver = ff.init_firefox();	
 		}
-//		driver.manage().window().maximize();
-//		SafeThread.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		SafeThread.setDriver(driver);
 		SafeThread.getDriver().get(prop.getProperty("url"));
 		Loggers.logger.info("navigate to " + prop.getProperty("url"));
 	}
@@ -95,7 +89,7 @@ public class Setup {
 
 	@AfterMethod
 	public void close_browser() {
-		
+
 		SafeThread.getDriver().quit();
 		SafeThread.unload();
 		Allure.step("close browser");

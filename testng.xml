@@ -7,33 +7,33 @@
 	<test name="fire fox tests">
 		<parameter name="browser" value="firefox"></parameter>
 		<classes>
-			<class name="tests.ContactUsTests" />
 			<class name="tests.DiscussionPageTests"></class>
 			<class name="tests.PurchaseTests"></class>
 			<class name="tests.Reset_Password_Tests"></class>
 			<class name="tests.SignInTests" />
+			<class name="tests.ContactUsTests" />
 			<!--	<class name="tests.SignupTests"></class> -->
 		</classes>
 	</test> <!-- Test -->
 	<test name="chrome tests">
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="tests.ContactUsTests" />
 			<class name="tests.DiscussionPageTests"></class>
 			<class name="tests.PurchaseTests"></class>
 			<class name="tests.Reset_Password_Tests"></class>
 			<class name="tests.SignInTests" />
+			<class name="tests.ContactUsTests" />
 			<!--	<class name="tests.SignupTests"></class> -->
 		</classes>
 	</test> <!-- Test -->
 	<test name="edge tests">
 		<parameter name="browser" value="edge"></parameter>
 		<classes>
-			<class name="tests.ContactUsTests" />
 			<class name="tests.DiscussionPageTests"></class>
 			<class name="tests.PurchaseTests"></class>
 			<class name="tests.Reset_Password_Tests"></class>
 			<class name="tests.SignInTests" />
+			<class name="tests.ContactUsTests" />
 			<!--	<class name="tests.SignupTests"></class> -->
 		</classes>
 	</test> <!-- Test -->

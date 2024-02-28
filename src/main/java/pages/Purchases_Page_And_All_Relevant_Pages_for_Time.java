@@ -81,7 +81,9 @@ public class Purchases_Page_And_All_Relevant_Pages_for_Time extends Setup {
 	public void select_vendor(int index) {
 		getCustomActions().explicit_wait_till_visible(vendor_selection, 10);
 		getCustomActions().clicking_element(vendor_selection);
-		getCustomActions().explicit_wait_til_property_not_be(vendor_elements, 10,"childElementCount","1");
+		getCustomActions().explicit_wait_till_visible(vendor_elements, 20);
+
+		getCustomActions().explicit_wait_til_property_not_be(vendor_elements, 20,"childElementCount","1");
 		if (index == 0) {
 			getCustomActions().clicking_enter(vendor_selection);
 		} else {

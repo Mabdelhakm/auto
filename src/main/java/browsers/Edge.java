@@ -11,13 +11,8 @@ public class Edge {
 	public WebDriver init_edge() {
 		EdgeOptions options = new EdgeOptions();
 		options.addArguments("--guest");
-//		options.addArguments("--headless");
-		options.addArguments("--remote-allow-origins=*");
+		options.addArguments("--headless");
 		options.addArguments("--window-size=1280,800");
-//		options.addArguments("--disable-gpu");
-//		options.addArguments("--no-sandbox");
-		
-//		options.addArguments("--allow-insecure-localhost");
 		WebDriver driver = new EdgeDriver(options);
 		Allure.step("start edge browser");
 		Loggers.logger.info("start edge browser");

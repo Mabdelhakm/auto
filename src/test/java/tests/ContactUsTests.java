@@ -20,7 +20,6 @@ public class ContactUsTests extends Setup {
 		homescreen.clickingTheContactUsButton();
 		contactus.typing_in_name_field("admin1");
 		contactus.typing_in_email_field("");
-
 		contactus.typing_in_phone_number_field("admin1");
 		contactus.typing_in_company_field("admin1");
 		contactus.typing_in_questions_field("admin1");

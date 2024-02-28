@@ -17,6 +17,12 @@ public class CustomActions extends Setup {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ele));
 	}
+	
+	public void explicit_wait_till_present(By ele, int time) {
+		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
+		wait.until(ExpectedConditions.presenceOfElementLocated(ele));
+	}
+
 
 	public void explicit_wait_till_visible(WebElement ele, int time) {
 		WebDriverWait wait = new WebDriverWait(SafeThread.getDriver(), Duration.ofSeconds(time));
